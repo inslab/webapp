@@ -11,6 +11,10 @@ def hello():
 
 @app.route('/simplewebapp')
 def simple():
+    f = open('./big.txt', 'r')
+    lines = f.readlines()
+    f.close()
+
     provider = str(os.environ.get('PROVIDER', 'world'))
     return 'Hello '+provider+'!!'
 
