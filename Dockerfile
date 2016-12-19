@@ -11,4 +11,4 @@ RUN mv /tmp/nginx-conf /etc/nginx/sites-available/default && service nginx resta
 ADD ./webapp /opt/webapp/
 WORKDIR /opt/webapp
 EXPOSE 5000
-CMD ["gunicorn", "app:app", "-b", ":5000"]
+CMD ["gunicorn", "app:app", "-w", "4", "-b", ":5000"]
