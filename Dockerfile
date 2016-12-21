@@ -12,4 +12,4 @@ RUN mv /tmp/nginx-conf /etc/nginx/sites-available/default && mv /tmp/nginx-main 
 ADD ./webapp /opt/webapp/
 WORKDIR /opt/webapp
 EXPOSE 5000
-CMD ["gunicorn", "app:app", "-w", "4", "-b", ":5000"]
+CMD ["gunicorn", "app:app", "-w", "4", "-b", ":5000", "-k", "gevent", "--worker-connections", "10000"]
