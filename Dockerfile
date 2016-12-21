@@ -7,7 +7,8 @@ RUN apt-get install -y nginx
 ADD ./webapp/requirements.txt /tmp/requirements.txt
 RUN pip install -qr /tmp/requirements.txt
 ADD ./webapp/nginx-conf /tmp/nginx-conf
-RUN mv /tmp/nginx-conf /etc/nginx/sites-available/default && service nginx restart
+ADD ./webapp/nginx-main /tmp/nginx-main
+RUN mv /tmp/nginx-conf /etc/nginx/sites-available/default && mv /tmp/nginx-main /etc/nginx/nginx.conf && service nginx restart
 ADD ./webapp /opt/webapp/
 WORKDIR /opt/webapp
 EXPOSE 5000
